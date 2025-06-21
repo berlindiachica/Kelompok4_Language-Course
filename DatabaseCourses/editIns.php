@@ -3,7 +3,7 @@
 
     $id=$_GET['id'];
     $query= mysqli_query($koneksi,
-    "SELECT*FROM courses WHERE ID ='$id'");
+    "SELECT*FROM instructors WHERE instructor_id ='$id'");
     $data=mysqli_fetch_array($query);
 
 ?>
@@ -13,7 +13,7 @@
 <form action="" method="post">
     <table>
         <tr>
-            <td>ID/td>
+            <td>ID</td>
             <td>:</td>
             <td><input type="text" name="instructor_id" value="<?php echo $data['instructor_id'] ?>"></td>
         </tr>
@@ -53,9 +53,9 @@
         $email = $_POST['email'];
         $phone_number = $_POST['phone_number'];
 
-        $query = "UPDATE courses SET instructor_id ='$instructor_id',instructor_name = '$instructor_name',
+        $query = "UPDATE instructors SET instructor_id ='$instructor_id',instructor_name = '$instructor_name',
                     expertise = '$expertise', email = '$email', phone_number = '$phone_number'
-                    WHERE ID = '$id'";
+                    WHERE instructor_id = '$id'";
 
         if (mysqli_query($koneksi, $query)){
             header("Location: tampilIns.php");

@@ -3,7 +3,7 @@
 
     $id=$_GET['id'];
     $query= mysqli_query($koneksi,
-    "SELECT*FROM courses WHERE ID ='$id'");
+    "SELECT*FROM students WHERE student_id ='$id'");
     $data=mysqli_fetch_array($query);
 
 ?>
@@ -13,7 +13,7 @@
 <form action="" method="post">
     <table>
         <tr>
-            <td>ID/td>
+            <td>ID</td>
             <td>:</td>
             <td><input type="text" name="student_id" value="<?php echo $data['student_id'] ?>"></td>
         </tr>
@@ -53,9 +53,9 @@
         $phone_number = $_POST['phone_number'];
         $registration_date = $_POST['registration_date'];
 
-        $query = "UPDATE courses SET student_id ='$student_id',student_name = '$student_name',
+        $query = "UPDATE students SET student_id ='$student_id',student_name = '$student_name',
                     email = '$email', phone_number = '$phone_number', registration_date = '$registration_date'
-                    WHERE ID = '$id'";
+                    WHERE student_id = '$id'";
 
         if (mysqli_query($koneksi, $query)){
             header("Location: tampilSsw.php");

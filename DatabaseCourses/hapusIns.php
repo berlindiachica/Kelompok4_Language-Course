@@ -3,7 +3,7 @@
 
     $id = $_GET['id'];
 
-    $query = "DELETE FROM courses WHERE ID = '$id'";
+    $query = "DELETE FROM instructors WHERE instructor_id = '$id'";
     if (mysqli_query($koneksi, $query)){
         header("Location: tampilIns.php");
     }else {

@@ -3,34 +3,34 @@
 
 ?>
 
-<h2>Tambah Siswa</h2>
+<h2>Tambah Instructor</h2>
 <hr>
 <form action="" method="post">
     <table>
-        <tr>
-            <td>Name</td>
+         <tr>
+            <td>Instructor ID</td>
             <td>:</td>
-            <td><input type="text" name="nama"></td>
+            <td><input type="text" name="instructor_id" value=""></td>
         </tr>
         <tr>
-            <td>NIM</td>
+            <td>Nama</td>
             <td>:</td>
-            <td><input type="text" name="nim"></td>
+            <td><input type="text" name="instructor_name" value=""></td>
         </tr>
         <tr>
-            <td>Kelas</td>
+            <td>Keahlian</td>
             <td>:</td>
-            <td><input type="text" name="kelas"></td>
+            <td><input type="text" name="expertise" value=""></td>
         </tr>
         <tr>
-            <td>Username</td>
+            <td>Email</td>
             <td>:</td>
-            <td><input type="text" name="username"></td>
+            <td><input type="email" name="email" value=""></td>
         </tr>
         <tr>
-            <td>Password</td>
+            <td>Nomor HP</td>
             <td>:</td>
-            <td><input type="password" name="password"></td>
+            <td><input type="number" name="phone_number" value=""></td>
         </tr>
         <tr>
             <td colspan="3" align="center">
@@ -42,17 +42,17 @@
 
 <?php
     if(isset($_POST['tambah'])){
-        $nama = $_POST['nama'];
-        $nim = $_POST['nim'];
-        $kelas = $_POST['kelas'];
-        $username = $_POST['username'];
-        $password = MD5($_POST['password']);
+        $instructor_id = $_POST['instructor_id'];
+        $instructor_name = $_POST['instructor_name'];
+        $expertise = $_POST['expertise'];
+        $email = $_POST['email'];
+        $phone_number = $_POST['phone_number'];
 
-        $query = "INSERT INTO  courses(nama,nim,kelas,username,password)
-                VALUES ('$nama','$nim','$kelas','$username','$password')";
+        $query = "INSERT INTO  instructors(instructor_id,instructor_name,expertise,email,phone_number)
+                VALUES ('$instructor_id','$instructor_name','$expertise','$email','$phone_number')";
 
         if (mysqli_query($koneksi, $query)){
-            header("Location: tampilMhs.php");
+            header("Location: tampilIns.php");
         } else{
             echo "Gagal menambahkan data!";
         }

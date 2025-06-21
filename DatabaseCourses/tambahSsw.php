@@ -8,9 +8,9 @@
 <form action="" method="post">
     <table>
         <tr>
-            <td>ID Siswa<td>
+            <td>ID Siswa</td>
             <td>:</td>
-            <td><input type="text" name="student_id" value=""></td>
+            <td><input type="text" name="student_id"></td>
         </tr>
         <tr>
             <td>Nama</td>
