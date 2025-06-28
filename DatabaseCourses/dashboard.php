@@ -209,11 +209,6 @@ $data7 = mysqli_fetch_assoc($query7);
                                 <i class="fas fa-clipboard-list"></i> Data Pendaftaran
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="admin.php">
-                                <i class="fas fa-tools"></i> Admin Tools
-                            </a>
-                        </li>
                         <li class="nav-item mt-4">
                             <a class="nav-link" href="#">
                                 <i class="fas fa-sign-out-alt"></i> Logout
@@ -356,10 +351,44 @@ $data7 = mysqli_fetch_assoc($query7);
                     </div>
                 </div>
 
-                <!-- Recent Enrollments -->
+                <!-- index -->
                 <div class="card mt-4">
                     <div class="card-header bg-primary text-white">
-                        <i class="fas fa-clipboard-list me-2"></i> Pendaftaran Terbaru
+                        <i class="fas fa-clipboard-list me-2"></i> Index pada Tabel students
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Key Name</th>
+                                        <th>Column Name</th>
+                                        <th>Unique</th>
+                                        <th>Index Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $queryIndex = mysqli_query($koneksi, "SHOW INDEX FROM students");
+                                    while ($row = mysqli_fetch_assoc($queryIndex)) {
+                                        echo "<tr>
+                                            <td>{$row['Key_name']}</td>
+                                            <td>{$row['Column_name']}</td>
+                                            <td>" . ($row['Non_unique'] == 0 ? 'Yes' : 'No') . "</td>
+                                            <td>{$row['Index_type']}</td>
+                                        </tr>";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View -->
+                <div class="card mt-4">
+                    <div class="card-header bg-primary text-white">
+                        <i class="fas fa-clipboard-list me-2"></i> Data dari View
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -393,6 +422,23 @@ $data7 = mysqli_fetch_assoc($query7);
                         </div>
                     </div>
                 </div>
+                <!-- Sequence Section -->
+                <div class="card mt-4">
+                    <div class="card-header bg-primary text-white">
+                        <i class="fas fa-clipboard-list me-2"></i> Next ID dari Sequence seq_student_id
+                    </div>
+                    <div class="card-body">
+                        <div class="card-body">
+                            <?php
+                            $querySeq = mysqli_query($koneksi, "SELECT NEXTVAL(seq_student_id) AS next_id");
+                            $seq = mysqli_fetch_assoc($querySeq);
+                            ?>
+                            <h4 class="text-success">Next Student ID: <strong><?= $seq['next_id'] ?></strong></h4>
+                        </div>
+                    </div>
+                </div>
+
+
             </main>
         </div>
     </div>

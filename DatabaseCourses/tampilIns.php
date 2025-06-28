@@ -174,16 +174,6 @@ include 'koneksiDB.php';
                                 <i class="fas fa-book"></i> Manajemen Kursus
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="view.php">
-                                <i class="fas fa-clipboard-list"></i> Data Pendaftaran
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="admin.php">
-                                <i class="fas fa-tools"></i> Admin Tools
-                            </a>
-                        </li>
                         <li class="nav-item mt-4">
                             <a class="nav-link" href="dasboard.php">
                                 <i class="fas fa-sign-out-alt"></i> Logout
@@ -239,7 +229,7 @@ include 'koneksiDB.php';
                                             <i class="fas fa-edit"></i> Edit
                                         </a>
                                         <a href="hapusIns.php?id=<?php echo $data['instructor_id'] ?>" class="btn-delete" onclick="return confirm('Yakin ingin hapus?')">
-                                            <i class="fas fa-trash"></i> Hapus
+                                            <i class="fas fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>

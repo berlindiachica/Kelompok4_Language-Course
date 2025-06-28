@@ -151,16 +151,6 @@ include 'koneksiDB.php';
                                 <i class="fas fa-book"></i> Manajemen Kursus
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="view.php">
-                                <i class="fas fa-clipboard-list"></i> Data Pendaftaran
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="admin.php">
-                                <i class="fas fa-tools"></i> Admin Tools
-                            </a>
-                        </li>
                         <li class="nav-item mt-4">
                             <a class="nav-link" href="dasboard.php">
                                 <i class="fas fa-sign-out-alt"></i> Logout
@@ -177,13 +167,6 @@ include 'koneksiDB.php';
                         <h2><i class="fas fa-book me-2"></i>Daftar Kursus</h2>
                     </div>
                 </div>
-
-                <div class="table-container">
-                    <div class="d-flex justify-content-end mb-3">
-                        <a href="tambahCourse.php" class="btn btn-add">
-                            <i class="fas fa-plus me-1"></i>Tambah Kursus
-                        </a>
-                    </div>
                     
                     <div class="table-responsive">
                         <table class="table">
