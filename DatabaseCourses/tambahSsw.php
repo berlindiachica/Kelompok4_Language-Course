@@ -1,7 +1,7 @@
 <?php
 include 'koneksiDB.php';
 
-$querySeq = mysqli_query($koneksi, "SELECT NEXTVAL(seq_student_id) AS next_id");
+$querySeq = mysqli_query($koneksi, "SELECT LPAD(NEXTVAL(seq_student_id), 3, '0') AS next_id");
 $dataSeq = mysqli_fetch_assoc($querySeq);
 $nextID = $dataSeq['next_id'];
 
