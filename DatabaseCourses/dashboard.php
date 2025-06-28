@@ -388,23 +388,6 @@ $data6 = mysqli_fetch_assoc($query6);
                         </div>
                     </div>
                 </div>
-                <!-- Sequence Section -->
-                <div class="card mt-4">
-                    <div class="card-header bg-primary text-white">
-                        <i class="fas fa-clipboard-list me-2"></i> Next ID dari Sequence seq_student_id
-                    </div>
-                    <div class="card-body">
-                        <div class="card-body">
-                            <?php
-                            $querySeq = mysqli_query($koneksi, "SELECT NEXTVAL(seq_student_id) AS next_id");
-                            $seq = mysqli_fetch_assoc($querySeq);
-                            ?>
-                            <h4 class="text-success">Next Student ID: <strong><?= $seq['next_id'] ?></strong></h4>
-                        </div>
-                    </div>
-                </div>
-
-
             </main>
         </div>
     </div>
