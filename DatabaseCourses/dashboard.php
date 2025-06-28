@@ -193,11 +193,6 @@ $data6 = mysqli_fetch_assoc($query6);
                                 <i class="fas fa-book"></i> Manajemen Kursus
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="view.php">
-                                <i class="fas fa-clipboard-list"></i> Data Pendaftaran
-                            </a>
-                        </li>
                         <li class="nav-item mt-4">
                             <a class="nav-link" href="#">
                                 <i class="fas fa-sign-out-alt"></i> Logout
