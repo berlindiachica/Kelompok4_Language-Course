@@ -1,6 +1,8 @@
 <?php
 include 'koneksiDB.php';
 
+$status_filter = isset($_POST['status']) ? $_POST['status'] : '';
+
 //Total Siswa
 $query1 = mysqli_query($koneksi, 
         "SELECT COUNT(*)AS total_siswa 
@@ -322,50 +324,33 @@ $data6 = mysqli_fetch_assoc($query6);
                             </div>
                         </div>
                     </div>
-                    
-                </div>
-
-                <!-- index -->
-                <div class="card mt-4">
-                    <div class="card-header bg-primary text-white">
-                        <i class="fas fa-clipboard-list me-2"></i> Index pada Tabel students
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Key Name</th>
-                                        <th>Column Name</th>
-                                        <th>Unique</th>
-                                        <th>Index Type</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $queryIndex = mysqli_query($koneksi, "SHOW INDEX FROM students");
-                                    while ($row = mysqli_fetch_assoc($queryIndex)) {
-                                        echo "<tr>
-                                            <td>{$row['Key_name']}</td>
-                                            <td>{$row['Column_name']}</td>
-                                            <td>" . ($row['Non_unique'] == 0 ? 'Yes' : 'No') . "</td>
-                                            <td>{$row['Index_type']}</td>
-                                        </tr>";
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- View -->
                 <div class="card mt-4">
                     <div class="card-header bg-primary text-white">
-                        <i class="fas fa-clipboard-list me-2"></i> Data dari View
+                        <i class="fas fa-clipboard-list me-2"></i> Data Pendaftaran
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
+                            <form method="POST" class="row g-3 mb-3">
+                                <div class="col-auto">
+                                    <label for="status" class="col-form-label">Filter Status:</label>
+                                </div>
+                                <div class="col-auto">
+                                    <select name="status" id="status" class="form-select">
+                                        <option value="">Semua</option>
+                                        <option value="Completed" <?= $status_filter == 'Completed' ? 'selected' : '' ?>>Completed</option>
+                                        <option value="Ongoing" <?= $status_filter == 'Ongoing' ? 'selected' : '' ?>>On Going</option>
+                                        <option value="Dropped" <?= $status_filter == 'Dropped' ? 'selected' : '' ?>>Dropped</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary">Tampilkan</button>
+                                </div>
+                            </form>
+
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -379,7 +364,14 @@ $data6 = mysqli_fetch_assoc($query6);
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $queryRecent = mysqli_query($koneksi, "SELECT * FROM view_enrollments_detail ORDER BY enrollment_date DESC LIMIT 5");
+                                    $status_filter = isset($_POST['status']) ? $_POST['status'] : '';
+                                    $whereClause = $status_filter ? "WHERE status = '$status_filter'" : '';
+                                    $queryRecent = mysqli_query($koneksi, 
+                                        "SELECT * FROM view_enrollments_detail 
+                                        $whereClause 
+                                        ORDER BY enrollment_date DESC 
+                                        LIMIT 5");
+
                                     while ($data = mysqli_fetch_assoc($queryRecent)) {
                                         echo "<tr>
                                             <td>{$data['enrollment_id']}</td>

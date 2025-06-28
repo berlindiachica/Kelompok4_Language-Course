@@ -1,6 +1,10 @@
 <?php
 include 'koneksiDB.php';
 
+$querySeq = mysqli_query($koneksi, "SELECT NEXTVAL(seq_student_id) AS next_id");
+$dataSeq = mysqli_fetch_assoc($querySeq);
+$nextID = $dataSeq['next_id'];
+
 if(isset($_POST['tambah'])){
     $student_id = $_POST['student_id'];
     $student_name = $_POST['student_name'];
@@ -203,7 +207,8 @@ if(isset($_POST['tambah'])){
                     <form action="" method="post">
                         <div class="mb-4">
                             <label for="student_id" class="form-label">ID Siswa</label>
-                            <input type="text" class="form-control" id="student_id" name="student_id" required>
+                            <input type="text" class="form-control" id="student_id" name="student_id" value="<?= $nextID ?>" readonly>
+
                         </div>
                         
                         <div class="mb-4">
