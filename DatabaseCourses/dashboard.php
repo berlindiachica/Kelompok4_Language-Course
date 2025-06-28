@@ -33,27 +33,14 @@ $query5 = mysqli_query($koneksi,
         FROM courses");
 $data5 = mysqli_fetch_assoc($query5);
 
-//Kursus terfavorit
-$query6 = mysqli_query($koneksi, 
-        "SELECT 
-            c.course_name,
-            c.language,
-            COUNT(e.enrollment_id) AS jumlah_pendaftar
-        FROM enrollments e
-        JOIN courses c 
-        ON e.course_id = c.course_id
-        GROUP BY e.course_id
-        ORDER BY jumlah_pendaftar DESC
-        LIMIT 1");
-$data6 = mysqli_fetch_assoc($query6);
 
 //Rata-rata Biaya Kursus yang Diambil oleh Siswa
-$query7 = mysqli_query($koneksi, 
+$query6 = mysqli_query($koneksi, 
         "SELECT AVG(c.price)AS avg_price
         FROM enrollments e
         JOIN courses c
         ON e.course_id = c.course_id");
-$data7 = mysqli_fetch_assoc($query7);
+$data6 = mysqli_fetch_assoc($query6);
 ?>
 
 <!DOCTYPE html>
@@ -327,7 +314,7 @@ $data7 = mysqli_fetch_assoc($query7);
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <div class="stat-value">Rp <?= number_format($data7['avg_price'], 0, ',', '.') ?></div>
+                                        <div class="stat-value">Rp <?= number_format($data6['avg_price'], 0, ',', '.') ?></div>
                                         <div class="stat-label">Rata-rata Harga</div>
                                     </div>
                                     <i class="fas fa-calculator fa-3x text-secondary"></i>
@@ -336,19 +323,6 @@ $data7 = mysqli_fetch_assoc($query7);
                         </div>
                     </div>
                     
-                    <div class="col-md-3">
-                        <div class="card stat-card primary">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <div class="stat-value"><?= $data6['jumlah_pendaftar'] ?? 0 ?></div>
-                                        <div class="stat-label">Pendaftar Kursus Terfavorit</div>
-                                    </div>
-                                    <i class="fas fa-star fa-3x text-primary"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- index -->
